@@ -1,5 +1,6 @@
 // $Id$
 /*
+<<<<<<< HEAD
  * Copyright (C) 2010 sk89q <http://www.sk89q.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,6 +15,10 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
+=======
+ * Copyright (C) 2010 sk89q <http://www.sk89q.com> and contributors
+ * All rights reserved.
+>>>>>>> a527a36... Added "and contributors" to all copyright notices.
 */
 
 package com.sk89q.minecraft.util.commands;
