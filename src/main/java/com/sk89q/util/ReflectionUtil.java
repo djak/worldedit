@@ -1,3 +1,4 @@
+// $Id$
 /*
  * WorldGuard
  * Copyright (C) 2011 sk89q <http://www.sk89q.com> and contributors
