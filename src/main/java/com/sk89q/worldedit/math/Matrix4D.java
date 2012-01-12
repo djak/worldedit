@@ -22,10 +22,14 @@ package com.sk89q.worldedit.math;
 import java.util.Arrays;
 
 public class Matrix4D {
+    private static final int ROWS = 4;
+    private static final int COLUMNS = 4;
+    private static final int CELLS = ROWS * COLUMNS;
+
     private final double[] data;
 
     public Matrix4D() {
-        data = new double[16];
+        data = new double[CELLS];
     }
 
     public Matrix4D(double... elements) {
@@ -38,15 +42,15 @@ public class Matrix4D {
     }
 
     public double getElement(int row, int column) {
-        if (row < 0 || row >= 4) {
-            throw new IllegalArgumentException("row argument is outside 0..3");
+        if (row < 0 || row >= ROWS) {
+            throw new IllegalArgumentException("row argument is outside 0.." + (ROWS - 1));
         }
 
-        if (column < 0 || column >= 4) {
-            throw new IllegalArgumentException("column argument is outside 0..3");
+        if (column < 0 || column >= COLUMNS) {
+            throw new IllegalArgumentException("column argument is outside 0.." + (COLUMNS - 1));
         }
 
-        return data[row * 4 + column];
+        return data[row * COLUMNS + column];
     }
 
 
@@ -61,11 +65,11 @@ public class Matrix4D {
     }
 
     public Matrix4D transposed() {
-        double[] ret = new double[16];
+        double[] ret = new double[CELLS];
 
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j) {
-                ret[i*4 + j] = getElement(j, i);
+        for (int row = 0; row < ROWS; ++row) {
+            for (int column = 0; column < COLUMNS; ++column) {
+                ret[row * COLUMNS + column] = getElement(column, row);
             }
         }
 
@@ -74,14 +78,14 @@ public class Matrix4D {
 
     public Vector4D multiply(Vector4D other) {
         double[] othera = new double[] { other.getX(), other.getY(), other.getZ(), other.getW() };
-        double[] ret = new double[4];
-        for (int j = 0; j < 4; ++j) {
-            ret[j] = 0;
-            for (int r = 0; r < 4; ++r) {
-                ret[j] += othera[r] * this.getElement(r, j);
+        double[] ret = new double[COLUMNS];
+        for (int column = 0; column < COLUMNS; ++column) {
+            ret[column] = 0;
+            for (int row = 0; row < ROWS; ++row) {
+                ret[column] += othera[row] * this.getElement(row, column);
             }
         }
-        
+
         return new Vector4D();
     }
 }
