@@ -53,6 +53,18 @@ public class Matrix4D {
         return data[row * COLUMNS + column];
     }
 
+    public void setElement(int row, int column, double value) {
+        if (row < 0 || row >= ROWS) {
+            throw new IllegalArgumentException("row argument is outside 0.." + (ROWS - 1));
+        }
+
+        if (column < 0 || column >= COLUMNS) {
+            throw new IllegalArgumentException("column argument is outside 0.." + (COLUMNS - 1));
+        }
+
+        data[row * COLUMNS + column] = value;
+    }
+
 
     public double determinant() {
         // TODO: find GPL-compatible determinant algo
@@ -117,6 +129,27 @@ public class Matrix4D {
             }
         }
 
-        return new Vector4D();
+        return new Vector4D(ret[0], ret[1], ret[2], ret[3]);
+    }
+
+    public Matrix4D multiply(Matrix4D other) {
+        if (new Integer(ROWS) != COLUMNS) {
+            throw new IllegalArgumentException("rows and columns don't match");
+        }
+
+        final Matrix4D ret = new Matrix4D();
+        for (int row = 0; row < ROWS; ++row) {
+            for (int column = 0; column < COLUMNS; ++column) {
+                double value = 0;
+
+                for (int middle = 0; middle < COLUMNS; ++middle) {
+                    value += getElement(row, middle) * other.getElement(middle, column);
+                }
+
+                ret.setElement(row, column, value);
+            }
+        }
+
+        return ret;
     }
 }
