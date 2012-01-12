@@ -82,16 +82,6 @@ public class Vector4D {
     }
 
     /**
-     * Set X.
-     *
-     * @param x
-     * @return new vector
-     */
-    public Vector4D setX(int x) {
-        return new Vector4D(x, y, z, w);
-    }
-
-    /**
      * @return the y
      */
     public double getY() {
@@ -105,16 +95,6 @@ public class Vector4D {
      * @return new vector
      */
     public Vector4D setY(double y) {
-        return new Vector4D(x, y, z, w);
-    }
-
-    /**
-     * Set Y.
-     *
-     * @param y
-     * @return new vector
-     */
-    public Vector4D setY(int y) {
         return new Vector4D(x, y, z, w);
     }
 
@@ -136,16 +116,6 @@ public class Vector4D {
     }
 
     /**
-     * Set Z.
-     *
-     * @param z
-     * @return new vector
-     */
-    public Vector4D setZ(int z) {
-        return new Vector4D(x, y, z, w);
-    }
-
-    /**
      * @return the w
      */
     public double getW() {
@@ -159,16 +129,6 @@ public class Vector4D {
      * @return new vector
      */
     public Vector4D setW(double w) {
-        return new Vector4D(x, y, z, w);
-    }
-
-    /**
-     * Set X.
-     *
-     * @param x
-     * @return new vector
-     */
-    public Vector4D setW(int w) {
         return new Vector4D(x, y, z, w);
     }
 
