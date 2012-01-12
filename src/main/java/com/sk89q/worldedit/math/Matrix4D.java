@@ -76,6 +76,37 @@ public class Matrix4D {
         return new Matrix4D(ret);
     }
 
+
+    public Matrix4D add(Matrix4D other) {
+        double[] ret = new double[CELLS];
+
+        for (int n = 0; n < CELLS; ++n) {
+            ret[n] = data[n] + other.data[n];
+        }
+
+        return new Matrix4D(ret);
+    }
+
+    public Matrix4D subtract(Matrix4D other) {
+        double[] ret = new double[CELLS];
+
+        for (int n = 0; n < CELLS; ++n) {
+            ret[n] = data[n] - other.data[n];
+        }
+
+        return new Matrix4D(ret);
+    }
+
+    public Matrix4D multiply(double scalar) {
+        double[] ret = new double[CELLS];
+
+        for (int n = 0; n < CELLS; ++n) {
+            ret[n] = data[n] * scalar;
+        }
+
+        return new Matrix4D(ret);
+    }
+
     public Vector4D multiply(Vector4D other) {
         double[] othera = new double[] { other.getX(), other.getY(), other.getZ(), other.getW() };
         double[] ret = new double[COLUMNS];
